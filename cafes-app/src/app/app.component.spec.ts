@@ -1,16 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { CafeListComponent } from './cafe/cafe-list/cafe-list.component';
+import { CafeService } from './cafe/cafe.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        HttpClientModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        CafeListComponent
       ],
+      providers: [
+        CafeService
+      ]
     }).compileComponents();
   });
 
@@ -30,6 +38,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, cafes-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('El Aroma mágico');
   });
 });
